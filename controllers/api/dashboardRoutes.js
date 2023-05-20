@@ -1,10 +1,24 @@
 const router = require('express').Router();
 const { Blog } = require('../models');
 const withAuth = require('../utils/auth');
+const checkUserInactivity = (req, res, next) => {
+    const inactivityDuration = 60 * 60 * 1000; 
+
+    if (req.session.lastActivity && Date.now() - req.session.lastActivity > inactivityDuration) {
+      
+        req.session.destroy();
+        return res.redirect('/login'); 
+    }
+
+    next();
+};
+
 
 // Dashboard homepage
 router.get('/', withAuth, async (req, res) => {
     try {
+
+        req.session.lastActivity = Date.now();
         // Retrieve blogs created by the logged-in user
         const blogData = await Blog.findAll({
             where: { user_id: req.session.user_id },
@@ -22,6 +36,7 @@ router.get('/', withAuth, async (req, res) => {
 // Edit blog page
 router.get('/edit/:id', withAuth, async (req, res) => {
     try {
+        req.session.lastActivity = Date.now();
         // Find the blog with the given ID
         const blogData = await Blog.findByPk(req.params.id);
 
@@ -47,6 +62,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 
 // Add new blog page
 router.get('/new', withAuth, (req, res) => {
+    req.session.lastActivity = Date.now();
     res.render('new-blog', { logged_in: true });
 });
 

@@ -1,9 +1,22 @@
 const router = require('express').Router();
 const { Blog } = require('../../models');
 const withAuth = require('../../utils/auth');
+const checkUserInactivity = (req, res, next) => {
+    const inactivityDuration = 60 * 60 * 1000; 
+
+    if (req.session.lastActivity && Date.now() - req.session.lastActivity > inactivityDuration) {
+     
+        req.session.destroy();
+        return res.redirect('/login'); 
+    }
+
+    next();
+};
+
 
 router.post('/', withAuth, async (req, res) => {
     try {
+        req.session.lastActivity = Date.now();
         const newBlog = await Blog.create({
             ...req.body,
             user_id: req.session.user_id,
@@ -17,6 +30,7 @@ router.post('/', withAuth, async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
     try {
+        req.session.lastActivity = Date.now();
         const blogData = await Blog.destroy({
             where: {
                 id: req.params.id,
