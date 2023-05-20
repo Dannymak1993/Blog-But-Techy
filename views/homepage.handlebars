@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Welcome to the Tech Blog!</h2>
+  {{#if posts.length}}
+    <h3>Recent Blog Posts:</h3>
+    <ul>
+      {{#each posts}}
+        <li>
+          <a href="/posts/{{this.id}}">{{this.title}}</a>
+          <p>Posted on {{formatDate this.createdAt}}</p>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No blog posts available yet.</p>
+  {{/if}}
+</div>

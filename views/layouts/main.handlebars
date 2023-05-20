@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Blog</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1>Tech Blog</h1>
+        <ul>
+          {{#if logged_in}}
+            <a href="/home">Home</a>
+            |
+            <li><a href="/dashboard">Dashboard</a></li>
+            <button class="no-button" id="logout">Logout</button>
+          {{else}}
+            <li><a href="/login">Login</a></li>
+          {{/if}}
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      {{{body}}}
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Tech Blog. All rights reserved.</p>
+    </footer>
+
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+  </body>
+</html>
