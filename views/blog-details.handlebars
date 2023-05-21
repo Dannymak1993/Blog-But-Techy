@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>{{blog.title}}</h2>
+  <p>Posted on {{format_date blog.created_at}} by {{blog.User.username}}</p>
+  <p>{{blog.content}}</p>
+
+  <hr>
+
+  {{#if blog.Comments.length}}
+    <h3>Comments:</h3>
+    <ul>
+      {{#each blog.Comments}}
+        <li>
+          <p>By: {{User.username}}</p>
+          <p>{{comment_text}}</p>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No comments available yet.</p>
+  {{/if}}
+
+  <hr>
+
+  <h3>Add a Comment:</h3>
+  <form class="comment-form">
+    <div class="form-group">
+      <label for="comment-text">Comment:</label>
+      <textarea class="form-input" id="comment-text" name="comment-text" rows="4"></textarea>
+      <button id="comment-button">Post Comment</button>
+    </div>
+  </form>
+</div>
+
+
+<input type="hidden" id="blog-id" value="{{blog.id}}">
+
+<script src="./js/comment.js"></script>

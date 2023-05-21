@@ -1,6 +1,7 @@
 [
   {
     "name": "Danny's Tech Blog",
-    "description": "A tech blog"
+    "description": "A tech blog",
+    "user_id": 1
   }
 ]

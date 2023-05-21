@@ -1,7 +1,6 @@
 <div class="container">
-  <h2>Welcome to the Tech Blog!</h2>
   {{#if blogs.length}}
-    <h3>Recent Blog Posts:</h3>
+    <h3>Your Blog Posts:</h3>
     <ul>
       {{#each blogs}}
         <li>
@@ -13,4 +12,7 @@
   {{else}}
     <p>No blog posts available yet.</p>
   {{/if}}
+
+<a href="/dashboard/newblog">
+<button>New Post</button></a>
 </div>
