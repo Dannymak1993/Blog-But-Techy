@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog } = require('../../models');
+const { Blog, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 const checkUserInactivity = (req, res, next) => {
     const inactivityDuration = 60 * 60 * 1000; 
@@ -27,6 +27,28 @@ router.post('/', withAuth, async (req, res) => {
         res.status(400).json(err);
     }
 });
+
+router.get('/:id', async (req, res) => {
+    try {
+        const blogData = await Blog.findByPk(req.params.id, {
+            include: [
+                { model: User },
+                { model: Comment, include: [{ model: User }] }
+            ]
+        });
+
+        if (!blogData) {
+            res.status(404).json({ message: 'No blog found with this id' });
+            return;
+        }
+
+        const blog = blogData.get({ plain: true });
+        res.render('blog-details', { blog }); // Render the 'blog-details' view with the blog data
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 
 router.delete('/:id', withAuth, async (req, res) => {
     try {
