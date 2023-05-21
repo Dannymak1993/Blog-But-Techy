@@ -10,10 +10,10 @@
     <nav>
       <h1>Tech Blog</h1>
       <ul>
-        {{#if logged_in}}
+        {{#if loggedIn}}
           <li><a href="/">Home</a></li>
           <li><a href="/dashboard">Dashboard</a></li>
-          <li><button class="no-button" id="logout">Logout</button></li>
+          <li><button id="logout">Logout</button>
         {{else}}
           <li><a href="/login">Login</a></li>
           <li><a href="/signup">Sign Up</a></li>
@@ -30,8 +30,9 @@
     <p>&copy; 2023 Tech Blog. All rights reserved.</p>
   </footer>
 
-  {{#if logged_in}}
-    <script src="/js/logout.js"></script>
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
   {{/if}}
 </body>
+
 </html>

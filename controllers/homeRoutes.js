@@ -20,14 +20,14 @@ router.get('/', async (req, res) => {
         // Pass serialized data and session flag into template
         res.render('homepage', {
             blogs,
-            logged_in: true,
+            loggedIn: req.session.loggedIn,
         });
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-router.get('/blog/:id', async (req, res) => {
+router.get('/blog/:id', withAuth, async (req, res) => {
     try {
         const blogData = await Blog.findByPk(req.params.id, {
             include: [
@@ -42,7 +42,7 @@ router.get('/blog/:id', async (req, res) => {
 
         res.render('blog-details', {
             ...blog,
-            logged_in: req.session.logged_in,
+            loggedIn: req.session.loggedIn,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -51,8 +51,8 @@ router.get('/blog/:id', async (req, res) => {
 
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
-    if (req.session.logged_in) {
-        res.redirect('/profile');
+    if (req.session.loggedIn) {
+        res.redirect('/');
         return;
     }
 

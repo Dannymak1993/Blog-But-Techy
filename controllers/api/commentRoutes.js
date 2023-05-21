@@ -1,16 +1,15 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
 
-router.post('/', async (req, res) => {
+router.post('/:blogId', async (req, res) => {
     try {
-        // Extract the comment data from the request body
-        const { commentText, blogId } = req.body;
+        const { commentText } = req.body;
+        const { blogId } = req.params; // Access the blogId from the route parameters
 
         // Create a new comment in the database
         const newComment = await Comment.create({
-            comment_text: commentText,
-            blog_id: blogId,
-            // Add any other necessary fields
+            commentText,
+            blog_id: blogId, // Associate the comment with the blog using the blogId
         });
 
         // Optionally, you can return the newly created comment as the response

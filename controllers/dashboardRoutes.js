@@ -13,7 +13,6 @@ const checkUserInactivity = (req, res, next) => {
     next();
 };
 
-
 // Dashboard homepage
 router.get('/', withAuth, async (req, res) => {
     try {
@@ -27,7 +26,7 @@ router.get('/', withAuth, async (req, res) => {
         // Serialize data so the template can read it
         const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-        res.render('dashboard', { blogs, logged_in: true });
+        res.render('dashboard', { blogs, loggedIn: true });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -55,7 +54,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         // Serialize data so the template can read it
         const blog = blogData.get({ plain: true });
 
-        res.render('edit-blog', { blog, logged_in: true });
+        res.render('edit-blog', { blog, loggedIn: true });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -64,7 +63,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 // Add new blog page
 router.get('/newblog', withAuth, (req, res) => {
     req.session.lastActivity = Date.now();
-    res.render('newblog', { logged_in: true });
+    res.render('newblog', { loggedIn: true });
 });
 
 

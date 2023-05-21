@@ -22,16 +22,10 @@
   <hr>
 
   <h3>Add a Comment:</h3>
-  <form class="comment-form">
-    <div class="form-group">
-      <label for="comment-text">Comment:</label>
-      <textarea class="form-input" id="comment-text" name="comment-text" rows="4"></textarea>
-      <button id="comment-button">Post Comment</button>
-    </div>
-  </form>
+  <form id="comment-form">
+  <textarea id="comment-text" rows="4" cols="50"></textarea>
+  <button type="submit">Submit Comment</button>
+</form>
 </div>
 
-
-<input type="hidden" id="blog-id" value="{{blog.id}}">
-
-<script src="/js/comment.js"></script>
+<script src="./js/comment.js"></script>
