@@ -1,6 +1,6 @@
 <div class="container">
-  <h2>{{blog.title}}</h2>
-  <p>Posted on {{format_date blog.created_at}} by {{blog.User.name}}</p>
+  <h2>{{blog.name}}</h2>
+  <p>Posted on {{format_date blog.created_at}} by {{blog.user.name}}</p>
   <p>{{blog.description}}</p>
 
   <hr>
@@ -10,8 +10,9 @@
     <ul>
       {{#each blog.comments}}
         <li>
-          <p>By: {{User.name}}</p>
+          <p>By: {{user.name}}</p>
           <p>{{commentText}}</p>
+          <p>Posted on {{format_date comment.created_at}}</p>
         </li>
       {{/each}}
     </ul>
