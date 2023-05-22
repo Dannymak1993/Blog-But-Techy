@@ -15,6 +15,8 @@ const checkUserInactivity = (req, res, next) => {
 
 
 router.post('/', withAuth, async (req, res) => {
+    console.log(req.body)
+    console.log(req.session)
     try {
         req.session.lastActivity = Date.now();
         const newBlog = await Blog.create({
@@ -24,6 +26,7 @@ router.post('/', withAuth, async (req, res) => {
 
         res.status(200).json(newBlog);
     } catch (err) {
+        console.log(err)
         res.status(400).json(err);
     }
 });

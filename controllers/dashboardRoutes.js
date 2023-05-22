@@ -29,7 +29,7 @@ router.get('/', withAuth, async (req, res) => {
         const blogs = blogData.map((blog) => blog.get({ plain: true }));
         console.log(blogs);
 
-        res.render('dashboard', { blogs });
+        res.render('dashboard', { blogs, loggedIn: req.session.loggedIn, });
     } catch (err) {
         res.status(500).json(err);
     }

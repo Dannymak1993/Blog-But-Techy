@@ -9,7 +9,8 @@ router.post('/:blogId', async (req, res) => {
         // Create a new comment in the database
         const newComment = await Comment.create({
             commentText,
-            blog_id: blogId, // Associate the comment with the blog using the blogId
+            blog_id: blogId,
+            user_id: req.session.user_id, // Associate the comment with the blog using the blogId
         });
 
         // Optionally, you can return the newly created comment as the response

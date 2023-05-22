@@ -9,7 +9,7 @@ const postFormHandler = async (event) => {
         // Send a POST request to the API endpoint
         const response = await fetch('/api/blog', {
             method: 'POST',
-            body: JSON.stringify({ title, content }),
+            body: JSON.stringify({ name:title, description:content }),
             headers: { 'Content-Type': 'application/json' },
         });
 

@@ -1,17 +1,17 @@
 <div class="container">
   <h2>{{blog.title}}</h2>
-  <p>Posted on {{format_date blog.created_at}} by {{blog.User.username}}</p>
-  <p>{{blog.content}}</p>
+  <p>Posted on {{format_date blog.created_at}} by {{blog.User.name}}</p>
+  <p>{{blog.description}}</p>
 
   <hr>
 
-  {{#if blog.Comments.length}}
+  {{#if blog.comments.length}}
     <h3>Comments:</h3>
     <ul>
-      {{#each blog.Comments}}
+      {{#each blog.comments}}
         <li>
-          <p>By: {{User.username}}</p>
-          <p>{{comment_text}}</p>
+          <p>By: {{User.name}}</p>
+          <p>{{commentText}}</p>
         </li>
       {{/each}}
     </ul>
@@ -24,8 +24,8 @@
   <h3>Add a Comment:</h3>
   <form id="comment-form">
   <textarea id="comment-text" rows="4" cols="50"></textarea>
-  <button type="submit">Submit Comment</button>
+  <button class="button" id="{{blog.id}}"type="submit">Submit Comment</button>
 </form>
 </div>
 
-<script src="./js/comment.js"></script>
+<script src="/js/comment.js"></script>

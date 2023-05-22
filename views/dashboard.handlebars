@@ -6,6 +6,7 @@
         <li>
           <a href="/blog/{{id}}">{{name}}</a>
           <p>Posted on {{format_date created_at}}</p>
+          <button class="button" id="{{id}}">delete</button>
         </li>
       {{/each}}
     </ul>
@@ -15,3 +16,5 @@
 
   <a href="/dashboard/newblog" class="btn btn-primary">New Post</a>
 </div>
+
+<script src="/js/delete.js"></script>
