@@ -10,9 +10,9 @@
     <ul>
       {{#each blog.comments}}
         <li>
+          <p class="comments">{{commentText}}</p>
           <p>By: {{user.name}}</p>
-          <p>{{commentText}}</p>
-          <p>Posted on {{format_date comment.created_at}}</p>
+          <p>Posted on {{ created_at}}</p>
         </li>
       {{/each}}
     </ul>

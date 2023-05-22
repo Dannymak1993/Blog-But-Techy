@@ -5,7 +5,7 @@
       {{#each blogs}}
         <li>
           <a href="/blog/{{id}}">{{name}}</a>
-          <p>Posted on {{format_date created_at}}</p>
+          <p>Posted on {{created_at}}</p>
           <button class="button" id="{{id}}">delete</button>
         </li>
       {{/each}}

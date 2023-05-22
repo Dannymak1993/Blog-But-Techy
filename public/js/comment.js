@@ -13,7 +13,7 @@ commentForm.addEventListener('submit', async (event) => {
         // Make the POST request to create the comment
         const response = await fetch(`/api/comments/${blog_id}`, {
             method: 'POST',
-            body: JSON.stringify({ commentText, created_at }),
+            body: JSON.stringify({ commentText }),
             headers: { 'Content-Type': 'application/json' },
         });
 

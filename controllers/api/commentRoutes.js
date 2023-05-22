@@ -16,6 +16,7 @@ router.post('/:blogId', async (req, res) => {
         // Optionally, you can return the newly created comment as the response
         res.status(200).json(newComment);
     } catch (err) {
+        console.log(err)
         res.status(500).json(err);
     }
 });
