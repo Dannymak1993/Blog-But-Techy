@@ -1,7 +1,7 @@
 
 const deleteFormHandler = async (event) => {
     
-    const blog = document.querySelector(".button")
+    const blog = document.querySelector(".delete-button")
     
     const blog_id = blog.getAttribute("id")
    
@@ -21,5 +21,5 @@ const deleteFormHandler = async (event) => {
     }
 
 document
-    .querySelector('.button')
+    .querySelector('.delete-button')
     .addEventListener('click', deleteFormHandler);

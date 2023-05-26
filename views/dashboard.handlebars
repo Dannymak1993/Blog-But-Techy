@@ -6,7 +6,8 @@
         <li>
           <a href="/blog/{{id}}">{{name}}</a>
           <p>Posted on {{created_at}}</p>
-          <button class="button" id="{{id}}">delete</button>
+          <button class="edit-button" id="{{id}}">Edit</button>
+          <button class="delete-button" id="{{id}}">Delete</button>
         </li>
       {{/each}}
     </ul>
@@ -18,3 +19,4 @@
 </div>
 
 <script src="/js/delete.js"></script>
+<script src="/js/edit.js"></script>
