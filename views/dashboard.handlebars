@@ -6,7 +6,7 @@
         <li>
           <a href="/blog/{{id}}">{{name}}</a>
           <p>Posted on {{created_at}}</p>
-          <a class="btn edit-button" href = "/dashboard/edit/{{id}}" id="{{id}}">Edit</a>
+          <a class="btn edit-button" href = "/dashboard/edit/{{id}}" id="{{id}}"><button>Edit</button></a>
           <button class="delete-button" id="{{id}}">Delete</button>
         </li>
       {{/each}}
@@ -15,7 +15,7 @@
     <p>No blog posts available yet.</p>
   {{/if}}
 
-  <a href="/dashboard/newblog" class="btn btn-primary">New Post</a>
+  <a href="/dashboard/newblog" class="btn btn-primary"><button>New Post</button></a>
 </div>
 
 <script src="/js/delete.js"></script>
