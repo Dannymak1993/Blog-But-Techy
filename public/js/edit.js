@@ -1,7 +1,7 @@
 const editFormHandler = async (event) => {
     event.preventDefault();
 
-    const button = event.target;
+    const button = event.currenttarget;
     const blogId = button.getAttribute("id");
 
     // Collect values from the edit form fields
@@ -35,5 +35,6 @@ const editFormHandler = async (event) => {
 };
 
 document.querySelectorAll('.edit-button').forEach((button) => {
+    console.log(button);
     button.addEventListener('click', editFormHandler);
 });
