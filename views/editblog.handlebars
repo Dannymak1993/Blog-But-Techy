@@ -1,0 +1,16 @@
+<div class="container">
+  <form class="form" action="/api/blog/{{blog.id}}" method="PUT">
+
+    <div class="form-group">
+      <label for="blog-title">Blog Title</label>
+      <input class="form-input" type="text" id="blog-title" name="title" value="{{blog.title}}" />
+    </div>
+    <div class="form-group">
+      <label for="post-content">Post Content</label>
+      <textarea class="form-input" id="post-content" name="content" rows="6">{{blog.content}}</textarea>
+      <button id="update-button" type="submit">Update</button>
+    </div>
+  </form>
+</div>
+
+<script src="/js/edit.js"></script>
