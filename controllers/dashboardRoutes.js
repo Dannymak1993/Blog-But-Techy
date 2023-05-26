@@ -35,7 +35,6 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-
 // Edit blog page
 router.get('/edit/:id', withAuth, async (req, res) => {
     try {
@@ -57,7 +56,7 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         // Serialize data so the template can read it
         const blog = blogData.get({ plain: true });
 
-        res.render('newblog', { blog, loggedIn: true });
+        res.render('editblog', { blog, loggedIn: true });
     } catch (err) {
         res.status(500).json(err);
     }

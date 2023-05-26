@@ -1,8 +1,8 @@
 const editFormHandler = async (event) => {
     event.preventDefault();
 
-    const button = event.currenttarget;
-    const blogId = button.getAttribute("id");
+    const button = event.target;
+    const blogId = button.getAttribute("data-id");
 
     // Collect values from the edit form fields
     const updatedTitle = document.querySelector('#blog-title').value;
@@ -34,7 +34,9 @@ const editFormHandler = async (event) => {
     }
 };
 
-document.querySelectorAll('.edit-button').forEach((button) => {
-    console.log(button);
-    button.addEventListener('click', editFormHandler);
-});
+// document.querySelectorAll('.edit-button').forEach((button) => {
+//     console.log(button);
+//     button.addEventListener('click', editFormHandler);
+// });
+
+document.getElementById('update-button').addEventListener("click", editFormHandler);

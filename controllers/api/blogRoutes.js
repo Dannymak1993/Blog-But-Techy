@@ -13,7 +13,6 @@ const checkUserInactivity = (req, res, next) => {
     next();
 };
 
-
 router.post('/', withAuth, async (req, res) => {
     console.log(req.body)
     console.log(req.session)
@@ -27,6 +26,36 @@ router.post('/', withAuth, async (req, res) => {
         res.status(200).json(newBlog);
     } catch (err) {
         console.log(err)
+        res.status(400).json(err);
+    }
+});
+
+router.put('/:id', withAuth, async (req, res) => {
+    console.log(req.body)
+    console.log(req.session)
+    try {
+        req.session.lastActivity = Date.now();
+        
+    const updatedBlog = await Blog.update(
+        {
+            ...req.body,
+            user_id: req.session.user_id,
+        },
+        {
+            where: {
+
+                id: req.params.id,
+            },
+        }
+    );
+        if (!updatedBlog[0]) {
+            res.status(404).json({ message: 'No blog found with this id!' });
+            return;
+        }
+
+        res.status(200).json(updatedBlog);
+    } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });
